@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - RunbookGen AI</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #eef4ff, #f7fbff);
+            color: #1f2937;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 430px;
+            background: white;
+            border-radius: 24px;
+            padding: 38px;
+            box-shadow: 0 20px 50px rgba(31, 78, 121, 0.14);
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e8f1ff;
+            color: #1f4e79;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            margin: 0 0 10px;
+            color: #123a63;
+            font-size: 34px;
+        }
+
+        p {
+            color: #5b6472;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #163d66;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 14px;
+            border: 1px solid #cbd5e1;
+            font-size: 15px;
+            margin-bottom: 18px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #1f4e79;
+            box-shadow: 0 0 0 4px rgba(31, 78, 121, 0.1);
+        }
+
+        button {
+            width: 100%;
+            border: none;
+            background: #1f4e79;
+            color: white;
+            padding: 14px;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #163d66;
+            transform: translateY(-1px);
+        }
+
+        .error {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+
+        .hint {
+            margin-top: 18px;
+            background: #f6faff;
+            border: 1px solid #dce9f8;
+            padding: 12px;
+            border-radius: 14px;
+            font-size: 14px;
+            color: #374151;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-card">
+        <div class="badge">Secure Access</div>
+
+        <h1>RunbookGen AI</h1>
+        <p>Login to access the AI-powered IT troubleshooting runbook generator.</p>
+
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST" action="/login">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter password" required>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <div class="hint">
+            Demo Login: <b>admin</b> / <b>admin123</b>
+        </div>
+    </div>
+</body>
+</html>

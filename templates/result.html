@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Runbook - RunbookGen AI</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #eef4ff, #f8fbff);
+            color: #1f2937;
+        }
+
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 35px 22px 55px;
+        }
+
+        .topbar {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 12px 35px rgba(31, 78, 121, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .title-box h1 {
+            margin: 0;
+            color: #123a63;
+            font-size: 36px;
+        }
+
+        .title-box p {
+            margin: 8px 0 0;
+            color: #5b6472;
+            font-size: 16px;
+        }
+
+        .btn {
+            border: none;
+            text-decoration: none;
+            background: #1f4e79;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 15px;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background: #163d66;
+            transform: translateY(-1px);
+        }
+
+        .btn-light {
+            background: #edf4fb;
+            color: #1f4e79;
+        }
+
+        .btn-light:hover {
+            background: #dfeefa;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 12px 35px rgba(31, 78, 121, 0.08);
+            padding: 26px;
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            margin: 0 0 16px;
+            color: #1f4e79;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e8f1ff;
+            color: #1f4e79;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .query-box {
+            background: #f6faff;
+            border-left: 5px solid #1f4e79;
+            padding: 18px;
+            border-radius: 14px;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .action-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+
+        .runbook-box {
+            background: #fbfdff;
+            border: 1px solid #dce8f5;
+            border-radius: 16px;
+            padding: 24px;
+            white-space: pre-wrap;
+            font-size: 16px;
+            line-height: 1.75;
+            color: #111827;
+            max-height: 620px;
+            overflow-y: auto;
+        }
+
+        .runbook-box::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .runbook-box::-webkit-scrollbar-thumb {
+            background: #b7c9dc;
+            border-radius: 10px;
+        }
+
+        .context-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+
+        .context-item {
+            background: #f8fbff;
+            border: 1px solid #dfeaf7;
+            border-left: 5px solid #8bb6df;
+            border-radius: 14px;
+            padding: 18px;
+            line-height: 1.6;
+            font-size: 15px;
+            color: #374151;
+        }
+
+        .empty-text {
+            color: #6b7280;
+            background: #f9fafb;
+            padding: 16px;
+            border-radius: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .wrapper {
+                padding: 20px 14px 40px;
+            }
+
+            .title-box h1 {
+                font-size: 28px;
+            }
+
+            .card,
+            .topbar {
+                padding: 20px;
+            }
+
+            .runbook-box,
+            .query-box,
+            .context-item {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <div class="topbar">
+            <div class="title-box">
+                <h1>Generated Runbook</h1>
+                <p>Structured troubleshooting output generated for the submitted issue.</p>
+            </div>
+
+            <div class="action-row">
+                <a href="/" class="btn btn-light">← Back to Home</a>
+                <a href="/history" class="btn">View History</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">Submitted Issue</h2>
+            <div class="query-box">{{ query }}</div>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">Runbook Output</h2>
+
+            {% if mode %}
+                <div class="badge">Generation Mode: {{ mode }}</div>
+            {% endif %}
+
+            <div class="action-row">
+                <button onclick="copyRunbook()" class="btn">Copy Runbook</button>
+
+                <form action="/export" method="POST">
+                    <textarea name="content" hidden>{{ result }}</textarea>
+                    <button type="submit" class="btn btn-light">Export TXT</button>
+                </form>
+            </div>
+
+            <div class="runbook-box" id="runbookText">{{ result }}</div>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">Retrieved Documentation Context</h2>
+
+            <div class="context-grid">
+                {% for doc in docs %}
+                    <div class="context-item">
+                        {% if doc.text %}
+                            {{ doc.text }}
+                        {% else %}
+                            {{ doc }}
+                        {% endif %}
+                    </div>
+                {% else %}
+                    <div class="empty-text">No documentation context was retrieved.</div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function copyRunbook() {
+            const text = document.getElementById("runbookText").innerText;
+            navigator.clipboard.writeText(text);
+            alert("Runbook copied!");
+        }
+    </script>
+</body>
+</html>

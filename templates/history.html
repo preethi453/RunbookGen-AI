@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Runbook History - RunbookGen AI</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f4f8fc;
+            color: #1f2937;
+        }
+
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 32px 20px 50px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .title-box h1 {
+            margin: 0;
+            color: #123a63;
+            font-size: 34px;
+        }
+
+        .title-box p {
+            margin: 8px 0 0;
+            color: #5b6472;
+            font-size: 16px;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            background: #1f4e79;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-weight: 700;
+        }
+
+        .back-btn:hover {
+            background: #163d66;
+        }
+
+        .card {
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 12px 35px rgba(31, 78, 121, 0.08);
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            margin: 0 0 10px;
+            color: #1f4e79;
+            font-size: 22px;
+        }
+
+        .meta {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 10px;
+        }
+
+        .runbook-box {
+            background: #fbfdff;
+            border: 1px solid #dde8f3;
+            border-radius: 14px;
+            padding: 16px;
+            white-space: pre-wrap;
+            font-size: 15px;
+            line-height: 1.6;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .mode-badge {
+            display: inline-block;
+            background: #e8f1ff;
+            color: #1f4e79;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            margin-left: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .title-box h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <!-- Top -->
+        <div class="topbar">
+            <div class="title-box">
+                <h1>Runbook History</h1>
+                <p>Previously generated troubleshooting runbooks.</p>
+            </div>
+            <a href="/" class="back-btn">← Back to Home</a>
+        </div>
+
+        <!-- History Items -->
+        {% for item in items %}
+        <div class="card">
+
+            <h2 class="section-title">
+                {{ item.issue }}
+                <span class="mode-badge">{{ item.mode }}</span>
+            </h2>
+
+            <div class="meta">
+                Generated on: {{ item.created_at }}
+            </div>
+
+            <div class="runbook-box">
+                {{ item.result }}
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+</body>
+</html>

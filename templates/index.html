@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RunbookGen AI</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #eef4ff, #f7fbff);
+            color: #1f2937;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 900px;
+            background: #ffffff;
+            border-radius: 22px;
+            padding: 42px;
+            box-shadow: 0 20px 50px rgba(31, 78, 121, 0.12);
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e8f1ff;
+            color: #1f4e79;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            margin: 0 0 12px;
+            font-size: 40px;
+            color: #123a63;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #4b5563;
+            margin-bottom: 28px;
+        }
+
+        .feature-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .feature-box {
+            background: #f8fbff;
+            border: 1px solid #dce9f8;
+            border-radius: 16px;
+            padding: 16px;
+        }
+
+        .feature-title {
+            font-weight: 700;
+            color: #1f4e79;
+            margin-bottom: 8px;
+        }
+
+        label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #163d66;
+            font-size: 17px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 160px;
+            border: 1px solid #cbd5e1;
+            border-radius: 16px;
+            padding: 18px;
+            font-size: 16px;
+            line-height: 1.6;
+            resize: vertical;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #1f4e79;
+            box-shadow: 0 0 0 4px rgba(31, 78, 121, 0.1);
+        }
+
+        .btn-row {
+            margin-top: 22px;
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: #1f4e79;
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .btn:hover {
+            background: #163d66;
+            transform: translateY(-1px);
+        }
+
+        .btn-light {
+            background: #edf4fb;
+            color: #1f4e79;
+        }
+
+        .btn-light:hover {
+            background: #dfeefa;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                padding: 24px;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+
+            .feature-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="card">
+            <div class="badge">Enterprise IT Automation</div>
+            <h1>RunbookGen AI</h1>
+            <p class="subtitle">
+                Generate structured troubleshooting runbooks from issue descriptions using
+                enterprise documentation, intelligent retrieval, and clean automated formatting.
+            </p>
+
+            <div class="feature-row">
+                <div class="feature-box">
+                    <div class="feature-title">Smart Retrieval</div>
+                    <div>Finds the most relevant enterprise troubleshooting context.</div>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-title">Structured Output</div>
+                    <div>Creates steps, commands, warnings, and validation checks.</div>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-title">Professional UI</div>
+                    <div>Clean interface for project demos and academic presentation.</div>
+                </div>
+            </div>
+
+            <form action="/generate" method="POST">
+                <label for="issue">Describe the IT issue</label>
+                <textarea
+                    id="issue"
+                    name="issue"
+                    placeholder="Example: Apache server is not working after a configuration update, and the application is not accessible on port 80."
+                    required
+                ></textarea>
+
+                <div class="btn-row">
+    <button class="btn" type="submit">Generate Runbook</button>
+    <button class="btn btn-light" type="reset">Clear</button>
+    <a href="/history" class="btn btn-light">History</a>
+               </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>
