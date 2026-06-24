@@ -12,178 +12,120 @@
 
         body {
             margin: 0;
-            font-family: "Segoe UI", Arial, sans-serif;
-            background: linear-gradient(135deg, #eef4ff, #f8fbff);
-            color: #1f2937;
+            font-family: "Inter", "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #f8fafc, #eef2f7);
+            color: #1e293b;
         }
 
         .wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 35px 22px 55px;
+            max-width: 1100px;
+            margin: auto;
+            padding: 30px 20px;
         }
 
         .topbar {
-            background: white;
-            border-radius: 20px;
-            padding: 24px;
-            box-shadow: 0 12px 35px rgba(31, 78, 121, 0.08);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 16px;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
         }
 
         .title-box h1 {
             margin: 0;
-            color: #123a63;
-            font-size: 36px;
+            font-size: 26px;
+            color: #0f172a;
         }
 
         .title-box p {
-            margin: 8px 0 0;
-            color: #5b6472;
-            font-size: 16px;
+            margin-top: 4px;
+            font-size: 14px;
+            color: #64748b;
         }
 
         .btn {
             border: none;
             text-decoration: none;
-            background: #1f4e79;
+            background: #2563eb;
             color: white;
-            padding: 12px 18px;
-            border-radius: 12px;
-            font-weight: 700;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
             cursor: pointer;
-            font-size: 15px;
-            transition: 0.2s;
         }
 
         .btn:hover {
-            background: #163d66;
-            transform: translateY(-1px);
+            background: #1d4ed8;
         }
 
         .btn-light {
-            background: #edf4fb;
-            color: #1f4e79;
+            background: #e2e8f0;
+            color: #1e293b;
         }
 
         .btn-light:hover {
-            background: #dfeefa;
+            background: #cbd5e1;
         }
 
         .card {
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 12px 35px rgba(31, 78, 121, 0.08);
-            padding: 26px;
-            margin-bottom: 24px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            padding: 18px;
+            margin-bottom: 18px;
         }
 
         .section-title {
-            margin: 0 0 16px;
-            color: #1f4e79;
-            font-size: 24px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
         }
 
         .badge {
             display: inline-block;
-            background: #e8f1ff;
-            color: #1f4e79;
-            padding: 6px 12px;
-            border-radius: 999px;
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 14px;
+            background: #e0edff;
+            color: #2563eb;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            margin-bottom: 10px;
         }
 
         .query-box {
-            background: #f6faff;
-            border-left: 5px solid #1f4e79;
-            padding: 18px;
-            border-radius: 14px;
-            font-size: 17px;
-            line-height: 1.6;
+            background: #f1f5f9;
+            border-left: 4px solid #2563eb;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 14px;
         }
 
         .action-row {
             display: flex;
-            gap: 12px;
+            gap: 10px;
+            margin-bottom: 12px;
             flex-wrap: wrap;
-            margin-bottom: 18px;
         }
 
+        /* ✅ TRANSPARENT PROFESSIONAL BOX */
         .runbook-box {
-            background: #fbfdff;
-            border: 1px solid #dce8f5;
-            border-radius: 16px;
-            padding: 24px;
-            white-space: pre-wrap;
-            font-size: 16px;
-            line-height: 1.75;
-            color: #111827;
-            max-height: 620px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(6px);
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 18px;
+
+            max-height: 550px;
             overflow-y: auto;
         }
 
-        .runbook-box::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .runbook-box::-webkit-scrollbar-thumb {
-            background: #b7c9dc;
-            border-radius: 10px;
-        }
-
-        .context-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 14px;
-        }
-
-        .context-item {
-            background: #f8fbff;
-            border: 1px solid #dfeaf7;
-            border-left: 5px solid #8bb6df;
-            border-radius: 14px;
-            padding: 18px;
-            line-height: 1.6;
-            font-size: 15px;
-            color: #374151;
-        }
-
-        .empty-text {
-            color: #6b7280;
-            background: #f9fafb;
-            padding: 16px;
-            border-radius: 12px;
-        }
-
-        @media (max-width: 768px) {
-            .wrapper {
-                padding: 20px 14px 40px;
-            }
-
-            .title-box h1 {
-                font-size: 28px;
-            }
-
-            .card,
-            .topbar {
-                padding: 20px;
-            }
-
-            .runbook-box,
-            .query-box,
-            .context-item {
-                font-size: 15px;
-            }
+        .runbook-box pre {
+            margin: 0;
+            font-family: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #1e293b;
+            white-space: pre-wrap;
         }
     </style>
 </head>
@@ -191,57 +133,45 @@
 <body>
     <div class="wrapper">
 
+        <!-- Top -->
         <div class="topbar">
             <div class="title-box">
                 <h1>Generated Runbook</h1>
-                <p>Structured troubleshooting output generated for the submitted issue.</p>
+                <p>Structured troubleshooting output</p>
             </div>
 
-            <div class="action-row">
-                <a href="/" class="btn btn-light">← Back to Home</a>
-                <a href="/history" class="btn">View History</a>
+            <div>
+                <a href="/" class="btn btn-light">Back</a>
+                <a href="/history" class="btn">History</a>
             </div>
         </div>
 
+        <!-- Issue -->
         <div class="card">
-            <h2 class="section-title">Submitted Issue</h2>
+            <div class="section-title">Submitted Issue</div>
             <div class="query-box">{{ query }}</div>
         </div>
 
+        <!-- Runbook -->
         <div class="card">
-            <h2 class="section-title">Runbook Output</h2>
+            <div class="section-title">Runbook Output</div>
 
             {% if mode %}
-                <div class="badge">Generation Mode: {{ mode }}</div>
+                <div class="badge">{{ mode }}</div>
             {% endif %}
 
             <div class="action-row">
-                <button onclick="copyRunbook()" class="btn">Copy Runbook</button>
+                <button onclick="copyRunbook()" class="btn">Copy</button>
 
                 <form action="/export" method="POST">
                     <textarea name="content" hidden>{{ result }}</textarea>
-                    <button type="submit" class="btn btn-light">Export TXT</button>
+                    <button type="submit" class="btn btn-light">Export</button>
                 </form>
             </div>
 
-            <div class="runbook-box" id="runbookText">{{ result }}</div>
-        </div>
-
-        <div class="card">
-            <h2 class="section-title">Retrieved Documentation Context</h2>
-
-            <div class="context-grid">
-                {% for doc in docs %}
-                    <div class="context-item">
-                        {% if doc.text %}
-                            {{ doc.text }}
-                        {% else %}
-                            {{ doc }}
-                        {% endif %}
-                    </div>
-                {% else %}
-                    <div class="empty-text">No documentation context was retrieved.</div>
-                {% endfor %}
+            <!-- ✅ FIXED OUTPUT -->
+            <div class="runbook-box">
+                <pre id="runbookText">{{ result }}</pre>
             </div>
         </div>
 
@@ -251,7 +181,7 @@
         function copyRunbook() {
             const text = document.getElementById("runbookText").innerText;
             navigator.clipboard.writeText(text);
-            alert("Runbook copied!");
+            alert("Copied!");
         }
     </script>
 </body>
