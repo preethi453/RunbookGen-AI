@@ -12,96 +12,131 @@
 
         body {
             margin: 0;
-            font-family: "Segoe UI", Arial, sans-serif;
-            background: #f4f8fc;
-            color: #1f2937;
+            font-family: "Inter", "Segoe UI", Arial, sans-serif;
+
+            /* ✅ LIGHTER BACKGROUND */
+            background: linear-gradient(135deg, #f8fbff, #eef4ff);
+
+            color: #1e293b;
         }
 
         .wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 32px 20px 50px;
+            max-width: 1000px;
+            margin: auto;
+            padding: 30px 20px;
         }
 
         .topbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 16px;
-            margin-bottom: 24px;
+            margin-bottom: 25px;
             flex-wrap: wrap;
         }
 
         .title-box h1 {
             margin: 0;
-            color: #123a63;
-            font-size: 34px;
+            font-size: 28px;
+            color: #0f172a;
         }
 
         .title-box p {
-            margin: 8px 0 0;
-            color: #5b6472;
-            font-size: 16px;
+            margin-top: 5px;
+            font-size: 14px;
+            color: #64748b;
         }
 
-        .back-btn {
+        .btn {
             text-decoration: none;
-            background: #1f4e79;
+            background: #2563eb;
             color: white;
-            padding: 12px 18px;
-            border-radius: 12px;
-            font-weight: 700;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.2s;
         }
 
-        .back-btn:hover {
-            background: #163d66;
+        .btn:hover {
+            background: #1d4ed8;
         }
 
+        /* ✅ LIGHT CARD */
         .card {
-            background: white;
-            border-radius: 18px;
-            box-shadow: 0 12px 35px rgba(31, 78, 121, 0.08);
-            padding: 24px;
-            margin-bottom: 24px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            border: 1px solid #e6edf5;
+            padding: 18px;
+            margin-bottom: 18px;
+
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
         }
 
         .section-title {
-            margin: 0 0 10px;
-            color: #1f4e79;
-            font-size: 22px;
-        }
-
-        .meta {
-            font-size: 14px;
-            color: #6b7280;
-            margin-bottom: 10px;
-        }
-
-        .runbook-box {
-            background: #fbfdff;
-            border: 1px solid #dde8f3;
-            border-radius: 14px;
-            padding: 16px;
-            white-space: pre-wrap;
-            font-size: 15px;
-            line-height: 1.6;
-            max-height: 300px;
-            overflow-y: auto;
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #1e293b;
         }
 
         .mode-badge {
             display: inline-block;
-            background: #e8f1ff;
-            color: #1f4e79;
-            padding: 4px 10px;
-            border-radius: 999px;
-            font-size: 12px;
+            background: #eaf2ff;
+            color: #2563eb;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 11px;
             margin-left: 8px;
+        }
+
+        .meta {
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 12px;
+        }
+
+        /* ✅ VERY LIGHT RUNBOOK BOX */
+        .runbook-box {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 14px;
+
+            max-height: 260px;
+            overflow-y: auto;
+
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .runbook-box pre {
+            margin: 0;
+            font-family: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+            font-size: 13.5px;
+            line-height: 1.7;
+            color: #334155;
+        }
+
+        /* ✅ SCROLLBAR CLEAN */
+        .runbook-box::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .runbook-box::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 6px;
+        }
+
+        .empty {
+            text-align: center;
+            color: #64748b;
+            margin-top: 40px;
+            font-size: 14px;
         }
 
         @media (max-width: 768px) {
             .title-box h1 {
-                font-size: 26px;
+                font-size: 22px;
             }
         }
     </style>
@@ -114,30 +149,35 @@
         <div class="topbar">
             <div class="title-box">
                 <h1>Runbook History</h1>
-                <p>Previously generated troubleshooting runbooks.</p>
+                <p>Previously generated troubleshooting results</p>
             </div>
-            <a href="/" class="back-btn">← Back to Home</a>
+
+            <a href="/" class="btn">Back</a>
         </div>
 
-        <!-- History Items -->
-        {% for item in items %}
-        <div class="card">
+        <!-- History -->
+        {% if items %}
+            {% for item in items %}
+            <div class="card">
 
-            <h2 class="section-title">
-                {{ item.issue }}
-                <span class="mode-badge">{{ item.mode }}</span>
-            </h2>
+                <div class="section-title">
+                    {{ item.issue }}
+                    <span class="mode-badge">{{ item.mode }}</span>
+                </div>
 
-            <div class="meta">
-                Generated on: {{ item.created_at }}
+                <div class="meta">
+                    Generated on: {{ item.created_at }}
+                </div>
+
+                <div class="runbook-box">
+                    <pre>{{ item.result }}</pre>
+                </div>
+
             </div>
-
-            <div class="runbook-box">
-                {{ item.result }}
-            </div>
-
-        </div>
-        {% endfor %}
+            {% endfor %}
+        {% else %}
+            <div class="empty">No history available yet.</div>
+        {% endif %}
 
     </div>
 </body>
